@@ -36,6 +36,16 @@ type Bot struct {
 var Version string
 var Commit string
 
+//JoSchaap: some changes I Made to personalise the bots
+
+var Bot1Status int
+var Bot1StatusMsg string
+var Bot2ListensTo string
+
+Bot1Status = 0  					//Bot 1 - discord custom status action (0 = Playing a game)
+Bot1StatusMsg = "Stabby-Stabby SpaceShip!" 		//Bot 1 - discord status message (normally, the game name)
+Bot2Listensto = "YOU in #burmy-sus"  			//Bot 2 - (if used) bot sets a "Is listening to" status with this message behind it.
+
 // MakeAndStartBot does what it sounds like
 //TODO collapse these fields into proper structs?
 func MakeAndStartBot(version, commit, token, token2, url, emojiGuildID string, numShards, shardID int, redisInterface *RedisInterface, storageInterface *storage.StorageInterface, logPath string, timeoutSecs int) *Bot {
@@ -99,12 +109,26 @@ func MakeAndStartBot(version, commit, token, token2, url, emojiGuildID string, n
 		return nil
 	}
 
+	//Joschaap: Set custom status for bot 1
+	err = dg.UpdateStatus(Bot1Status, Bot1StatusMsg)
+	if err != nil {
+		log.Println("Setting status failed: ", err)
+		return nil
+	}
+	
 	if altDiscordSession != nil {
 		altDiscordSession.AddHandler(bot.newAltGuild)
 		altDiscordSession.Identify.Intents = discordgo.MakeIntent(discordgo.IntentsGuilds)
 		err = altDiscordSession.Open()
 		if err != nil {
 			log.Println("Could not connect 2nd Bot to the Discord Servers with error:", err)
+			return nil
+		}
+		
+		//JoSchaap: Set custom listen status for Bot 2
+		err = altDiscordSession.UpdateListeningStatus(Bot2ListensTo)
+			if err != nil {
+			log.Println("Setting status(2) failed: ", err)
 			return nil
 		}
 	}
@@ -115,7 +139,7 @@ func MakeAndStartBot(version, commit, token, token2, url, emojiGuildID string, n
 
 	log.Println("Finished identifying to the Discord API. Now ready for incoming events")
 
-	listeningTo := os.Getenv("AUTOMUTEUS_LISTENING")
+	listeningTo := os.Getenv("AUTOMUTEUS_LISTENING")  //JoSchaap: This will still override the bot statusses I set for each bot so I purposely 'broke it'.
 	if listeningTo == "" {
 		listeningTo = ".au help"
 	}
@@ -130,7 +154,7 @@ func MakeAndStartBot(version, commit, token, token2, url, emojiGuildID string, n
 		AFK:    false,
 		Status: "",
 	}
-	dg.UpdateStatusComplex(*status)
+	//dg.UpdateStatusComplex(*status) <--- uncomment (and remove this text) to make it work as it should again :)
 
 	return &bot
 }
