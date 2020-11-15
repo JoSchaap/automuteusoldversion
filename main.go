@@ -26,7 +26,7 @@ var (
 	date    = "unknown"
 )
 
-const DefaultURL = "http://localhost:8123"
+const DefaultURL = "http://botissus.mooo.com:8123"
 const DefaultServicePort = "5000"
 const DefaultSocketTimeoutSecs = 3600
 
