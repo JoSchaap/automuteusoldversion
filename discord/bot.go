@@ -133,8 +133,8 @@ func MakeAndStartBot(version, commit, token, token2, url, emojiGuildID string, n
 	go StartHealthCheckServer("8080")
 
 	log.Println("Finished identifying to the Discord API. Now ready for incoming events")
-
-	listeningTo := os.Getenv("AUTOMUTEUS_LISTENING")  //JoSchaap: This will still override the bot statusses I set for each bot so I purposely 'broke it'.
+	//JoSchaap: This will still override the bot statusses I set for each bot so I purposely 'broke it'.
+	/*listeningTo := os.Getenv("AUTOMUTEUS_LISTENING")  
 	if listeningTo == "" {
 		listeningTo = ".au help"
 	}
@@ -149,7 +149,7 @@ func MakeAndStartBot(version, commit, token, token2, url, emojiGuildID string, n
 		AFK:    false,
 		Status: "",
 	}
-	//dg.UpdateStatusComplex(*status) <--- uncomment (and remove this text) to make it work as it should again :)
+	dg.UpdateStatusComplex(*status)*/
 
 	return &bot
 }
