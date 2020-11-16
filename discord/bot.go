@@ -37,14 +37,9 @@ var Version string
 var Commit string
 
 //JoSchaap: some changes I Made to personalise the bots
-
-var Bot1Status int
-var Bot1StatusMsg string
-var Bot2ListensTo string
-
-Bot1Status = 0  					//Bot 1 - discord custom status action (0 = Playing a game)
-Bot1StatusMsg = "Stabby-Stabby SpaceShip!" 		//Bot 1 - discord status message (normally, the game name)
-Bot2Listensto = "YOU in #burmy-sus"  			//Bot 2 - (if used) bot sets a "Is listening to" status with this message behind it.
+var Bot1Status = 0  					//Bot 1 - discord custom status action (0 = Playing a game)
+var Bot1StatusMsg = "Stabby-Stabby SpaceShip!" 		//Bot 1 - discord status message (normally, the game name)
+var Bot2Listensto = "YOU in #burmy-sus"  		//Bot 2 - (if used) bot sets a "Is listening to" status with this message behind it.
 
 // MakeAndStartBot does what it sounds like
 //TODO collapse these fields into proper structs?
