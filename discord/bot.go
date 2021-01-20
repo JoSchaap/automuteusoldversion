@@ -39,7 +39,7 @@ var Commit string
 //JoSchaap: some changes I Made to personalise the bots
 var Bot1Status = 0  					//Bot 1 - discord custom status action (0 = Playing a game)
 var Bot1StatusMsg = "Among Sokkie-sus!" 		//Bot 1 - discord status message (normally, the game name)
-var Bot2ListensTo = "YOU in :speaker:Among Us"  		//Bot 2 - (if used) bot sets a "Is listening to" status with this message behind it.
+var Bot2ListensTo = "YOU in #Among Us"  		//Bot 2 - (if used) bot sets a "Is listening to" status with this message behind it.
 
 // MakeAndStartBot does what it sounds like
 //TODO collapse these fields into proper structs?
