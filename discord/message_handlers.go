@@ -13,7 +13,7 @@ import (
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
-const downloadURL = "https://github.com/denverquane/amonguscapture/releases/latest/download/amonguscapture.exe"
+const downloadURL = "https://github.com/denverquane/amonguscapture/releases/latest/"
 
 var urlregex = regexp.MustCompile(`^http(?P<secure>s?)://(?P<host>[\w.-]+)(?::(?P<port>\d+))?/?$`)
 
